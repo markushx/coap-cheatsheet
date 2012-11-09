@@ -75,7 +75,8 @@
 
 \begin{center}
      \Large{\underline{Constrained Application Protocol}} \\
-     \Large{\underline{(CoAP-12)}}
+     (draft-ietf-core-coap-12, draft-ietf-core-block-10,
+     draft-ietf-core-observe-07)
 \end{center}
 
 The Constrained Application Protocol (CoAP) is a specialized web
@@ -277,14 +278,13 @@ firmware updates $-$ the Block option can be used.
 
 {\tiny
 \begin{verbatim}
-+------+----------+--------+--------+--------+---------+
-| Type | C/E      | Name   | Format | Length | Default |
-+------+----------+--------+--------+--------+---------+
-|   19 | Critical | Block1 | uint   | 1-3 B  | 0       |
-|   17 | Critical | Block2 | uint   | 1-3 B  | 0       |
-+------+----------+--------+--------+--------+---------+
++-----+---+---+---+---+----------------+--------+--------+----------+
+| No. | C | U | N | R | Name           | Format | Length | Default  |
++-----+---+---+---+---+----------------+--------+--------+----------+
+|  23 | x | x |   |   | Block2         | uint   | 0-3 B  | (none)   |
+|  27 | x | x |   |   | Block1         | uint   | 0-3 B  | (none)   |
++-----+---+---+---+---+----------------+--------+--------+----------+
 \end{verbatim}
-NOTE: needs update to meet coap-12 option table
 }
 {\tiny
 \begin{verbatim}
@@ -315,15 +315,13 @@ can be used.
 
 {\tiny
 \begin{verbatim}
-+-----+----+----+---------+------------+-----------+---------+
-| No. | C. | R. | Name    | Format     | Length    | Default |
-+-----+----+----+---------+------------+-----------+---------+
-|  10 | no | no | Observe | empty/uint | 0 B/0-2 B | (none)  |
-+-----+----+----+---------+------------+-----------+---------+
++-----+---+---+---+---+---------+------------+-----------+---------+
+| No. | C | U | N | R | Name    | Format     | Length    | Default |
++-----+---+---+---+---+---------+------------+-----------+---------+
+|   6 |   | x | x |   | Observe | empty/uint | 0 B/0-2 B | (none)  |
++-----+---+---+---+---+---------+------------+-----------+---------+
 \end{verbatim}
-NOTE: needs update to meet coap-12 option table
 }
-
 
 \section{References}
 This cheatsheet is based on and heavily stole from the following
@@ -331,8 +329,8 @@ documents:\\
 
 Link-format:\\ \url{http://tools.ietf.org/html/rfc6690}\\
 CoAP:\\ \url{http://tools.ietf.org/html/draft-ietf-core-coap-12}
-Block:\\ \url{http://tools.ietf.org/html/draft-ietf-core-block-09}
-Observe:\\ \url{http://tools.ietf.org/html/draft-ietf-core-observe-06}
+Block:\\ \url{http://tools.ietf.org/html/draft-ietf-core-block-10}
+Observe:\\ \url{http://tools.ietf.org/html/draft-ietf-core-observe-07}
 
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
