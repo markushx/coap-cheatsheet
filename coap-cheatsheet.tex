@@ -80,7 +80,7 @@
 \begin{center}
      \Large{\underline{Constrained Application Protocol}} \\
      {\tiny
-       (RFC 6690, draft-ietf-core-coap-12, draft-ietf-core-block-10,
+       (RFC 6690, draft-ietf-core-coap-13, draft-ietf-core-block-10,
        draft-ietf-core-observe-07)
      }
 \end{center}
@@ -95,14 +95,16 @@ transfer protocol for use with constrained nodes and constrained
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|Ver| T |  OC   |      Code     |          Message ID           |
+|Ver| T |  TKL  |      Code     |          Message ID           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Token (if any, TKL bytes) ...
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |   Options (if any) ...
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|   Payload (if any) ...
+|1 1 1 1 1 1 1 1|    Payload (if any) ...
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{verbatim}
-Ver: Version, T: Type, OC: Option Count
+Ver: Version, T: Type, TKL: Token Length
 }
 
 \section{Method types}
@@ -194,21 +196,21 @@ Ver: Version, T: Type, OC: Option Count
 | No. | C | U | N | R | Name           | Format | Length | Default  |
 +-----+---+---+---+---+----------------+--------+--------+----------+
 |   1 | x |   |   | x | If-Match       | opaque | 0-8    | (none)   |
-|   3 | x | x |   |   | Uri-Host       | string | 1-255  | (see     |
+|   3 | x | x | - |   | Uri-Host       | string | 1-255  | (see     |
 |     |   |   |   |   |                |        |        | below)   |
 |   4 |   |   |   | x | ETag           | opaque | 1-8    | (none)   |
 |   5 | x |   |   |   | If-None-Match  | empty  | 0      | (none)   |
-|   7 | x | x |   |   | Uri-Port       | uint   | 0-2    | (see     |
+|   7 | x | x | - |   | Uri-Port       | uint   | 0-2    | (see     |
 |     |   |   |   |   |                |        |        | below)   |
 |   8 |   |   |   | x | Location-Path  | string | 0-255  | (none)   |
-|  11 | x | x |   | x | Uri-Path       | string | 0-255  | (none)   |
+|  11 | x | x | - | x | Uri-Path       | string | 0-255  | (none)   |
 |  12 |   |   |   |   | Content-Format | uint   | 0-2    | (none)   |
-|  14 |   | x |   |   | Max-Age        | uint   | 0-4    | 60       |
-|  15 | x | x |   | x | Uri-Query      | string | 1-255  | (none)   |
+|  14 |   | x | - |   | Max-Age        | uint   | 0-4    | 60       |
+|  15 | x | x | - | x | Uri-Query      | string | 0-255  | (none)   |
 |  16 |   |   |   | x | Accept         | uint   | 0-2    | (none)   |
-|  19 | x | x |   |   | Token          | opaque | 1-8    | (empty)  |
 |  20 |   |   |   | x | Location-Query | string | 0-255  | (none)   |
-|  35 | x | x |   |   | Proxy-Uri      | string | 1-1034 | (none)   |
+|  35 | x | x | - |   | Proxy-Uri      | string | 1-1034 | (none)   |
+|  39 | x | x | - |   | Proxy-Scheme   | string | 1-255  | (none)   |
 +-----+---+---+---+---+----------------+--------+--------+----------+
 \end{verbatim}
 C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable
@@ -384,7 +386,7 @@ documents:\\
 
 {\tiny
 Link-format: \url{http://tools.ietf.org/html/rfc6690}\\
-CoAP: \url{http://tools.ietf.org/html/draft-ietf-core-coap-12}\\
+CoAP: \url{http://tools.ietf.org/html/draft-ietf-core-coap-13}\\
 Block: \url{http://tools.ietf.org/html/draft-ietf-core-block-10}\\
 Observe: \url{http://tools.ietf.org/html/draft-ietf-core-observe-07}\\
 }
