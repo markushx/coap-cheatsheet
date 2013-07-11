@@ -80,8 +80,8 @@
 \begin{center}
      \Large{\underline{Constrained Application Protocol}} \\
      {\tiny
-       (RFC 6690, draft-ietf-core-coap-13, draft-ietf-core-block-10,
-       draft-ietf-core-observe-07)
+       (RFC 6690, draft-ietf-core-coap-18, draft-ietf-core-block-12,
+       draft-ietf-core-observe-08)
      }
 \end{center}
 
@@ -127,10 +127,10 @@ Ver: Version, T: Type, TKL: Token Length
 +------+--------+
 | Code | Name   |
 +------+--------+
-|    1 | GET    |
-|    2 | POST   |
-|    3 | PUT    |
-|    4 | DELETE |
+| 0.01 | GET    |
+| 0.02 | POST   |
+| 0.03 | PUT    |
+| 0.04 | DELETE |
 +------+--------+
 \end{verbatim}
 }
@@ -161,57 +161,56 @@ Ver: Version, T: Type, TKL: Token Length
 
 {\tiny
 \begin{verbatim}
-+------+---------------------------------+
-| Code | Description                     |
-+------+---------------------------------+
-|   65 | 2.01 Created                    |
-|   66 | 2.02 Deleted                    |
-|   67 | 2.03 Valid                      |
-|   68 | 2.04 Changed                    |
-|   69 | 2.05 Content                    |
-|  128 | 4.00 Bad Request                |
-|  129 | 4.01 Unauthorized               |
-|  130 | 4.02 Bad Option                 |
-|  131 | 4.03 Forbidden                  |
-|  132 | 4.04 Not Found                  |
-|  133 | 4.05 Method Not Allowed         |
-|  134 | 4.06 Not Acceptable             |
-|  140 | 4.12 Precondition Failed        |
-|  141 | 4.13 Request Entity Too Large   |
-|  143 | 4.15 Unsupported Content-Format |
-|  160 | 5.00 Internal Server Error      |
-|  161 | 5.01 Not Implemented            |
-|  162 | 5.02 Bad Gateway                |
-|  163 | 5.03 Service Unavailable        |
-|  164 | 5.04 Gateway Timeout            |
-|  165 | 5.05 Proxying Not Supported     |
-+------+---------------------------------+
++------+------------------------------+
+| Code | Description                  |
++------+------------------------------+
+| 2.01 | Created                      |
+| 2.02 | Deleted                      |
+| 2.03 | Valid                        |
+| 2.04 | Changed                      |
+| 2.05 | Content                      |
+| 4.00 | Bad Request                  |
+| 4.01 | Unauthorized                 |
+| 4.02 | Bad Option                   |
+| 4.03 | Forbidden                    |
+| 4.04 | Not Found                    |
+| 4.05 | Method Not Allowed           |
+| 4.06 | Not Acceptable               |
+| 4.12 | Precondition Failed          |
+| 4.13 | Request Entity Too Large     |
+| 4.15 | Unsupported Content-Format   |
+| 5.00 | Internal Server Error        |
+| 5.01 | Not Implemented              |
+| 5.02 | Bad Gateway                  |
+| 5.03 | Service Unavailable          |
+| 5.04 | Gateway Timeout              |
+| 5.05 | Proxying Not Supported       |
++------+------------------------------+
 \end{verbatim}
 }
 
 \section{Options}
 {\tiny
 \begin{verbatim}
-+-----+---+---+---+---+----------------+--------+--------+----------+
-| No. | C | U | N | R | Name           | Format | Length | Default  |
-+-----+---+---+---+---+----------------+--------+--------+----------+
-|   1 | x |   |   | x | If-Match       | opaque | 0-8    | (none)   |
-|   3 | x | x | - |   | Uri-Host       | string | 1-255  | (see     |
-|     |   |   |   |   |                |        |        | below)   |
-|   4 |   |   |   | x | ETag           | opaque | 1-8    | (none)   |
-|   5 | x |   |   |   | If-None-Match  | empty  | 0      | (none)   |
-|   7 | x | x | - |   | Uri-Port       | uint   | 0-2    | (see     |
-|     |   |   |   |   |                |        |        | below)   |
-|   8 |   |   |   | x | Location-Path  | string | 0-255  | (none)   |
-|  11 | x | x | - | x | Uri-Path       | string | 0-255  | (none)   |
-|  12 |   |   |   |   | Content-Format | uint   | 0-2    | (none)   |
-|  14 |   | x | - |   | Max-Age        | uint   | 0-4    | 60       |
-|  15 | x | x | - | x | Uri-Query      | string | 0-255  | (none)   |
-|  16 |   |   |   | x | Accept         | uint   | 0-2    | (none)   |
-|  20 |   |   |   | x | Location-Query | string | 0-255  | (none)   |
-|  35 | x | x | - |   | Proxy-Uri      | string | 1-1034 | (none)   |
-|  39 | x | x | - |   | Proxy-Scheme   | string | 1-255  | (none)   |
-+-----+---+---+---+---+----------------+--------+--------+----------+
++-----+----+---+---+---+----------------+--------+--------+-------------+
+| No. | C  | U | N | R | Name           | Format | Length | Default     |
++-----+----+---+---+---+----------------+--------+--------+-------------+
+|   1 | x  |   |   | x | If-Match       | opaque | 0-8    | (none)      |
+|   3 | x  | x | - |   | Uri-Host       | string | 1-255  | (see below) |  
+|   4 |    |   |   | x | ETag           | opaque | 1-8    | (none)      |
+|   5 | x  |   |   |   | If-None-Match  | empty  | 0      | (none)      |
+|   7 | x  | x | - |   | Uri-Port       | uint   | 0-2    | (see below) |
+|   8 |    |   |   | x | Location-Path  | string | 0-255  | (none)      |
+|  11 | x  | x | - | x | Uri-Path       | string | 0-255  | (none)      |
+|  12 |    |   |   |   | Content-Format | uint   | 0-2    | (none)      |
+|  14 |    | x | - |   | Max-Age        | uint   | 0-4    | 60          |
+|  15 | x  | x | - | x | Uri-Query      | string | 0-255  | (none)      |
+|  17 | x  |   |   |   | Accept         | uint   | 0-2    | (none)      |
+|  20 |    |   |   | x | Location-Query | string | 0-255  | (none)      |
+|  35 | x  | x | - |   | Proxy-Uri      | string | 1-1034 | (none)      |
+|  39 | x  | x | - |   | Proxy-Scheme   | string | 1-255  | (none)      |
+|  60 |    |   | x |   | Size1          | uint   | 0-4    | (none)      |
++-----+----+---+---+---+----------------+--------+--------+-------------+
 \end{verbatim}
 C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable
 }
@@ -337,9 +336,8 @@ firmware updates $-$ the Block option can be used.
 +-----+---+---+---+---+----------------+--------+--------+----------+
 | No. | C | U | N | R | Name           | Format | Length | Default  |
 +-----+---+---+---+---+----------------+--------+--------+----------+
-|  23 | x | x |   |   | Block2         | uint   | 0-3 B  | (none)   |
-|  27 | x | x |   |   | Block1         | uint   | 0-3 B  | (none)   |
-|  28 |   |   | x |   | Size           | uint   | 0-4 B  | (none)   |
+|  23 | x | x | - | - | Block2         | uint   | 0-3 B  | (none)   |
+|  27 | x | x | - | - | Block1         | uint   | 0-3 B  | (none)   |
 +-----+---+---+---+---+----------------+--------+--------+----------+
 \end{verbatim}
 }
@@ -375,7 +373,7 @@ can be used.
 +-----+---+---+---+---+---------+------------+-----------+---------+
 | No. | C | U | N | R | Name    | Format     | Length    | Default |
 +-----+---+---+---+---+---------+------------+-----------+---------+
-|   6 |   | x | x |   | Observe | empty/uint | 0 B/0-3 B | (none)  |
+|   6 |   | x | - |   | Observe | empty/uint | 0 B/0-3 B | (none)  |
 +-----+---+---+---+---+---------+------------+-----------+---------+
 \end{verbatim}
 }
@@ -386,9 +384,9 @@ documents:\\
 
 {\tiny
 Link-format: \url{http://tools.ietf.org/html/rfc6690}\\
-CoAP: \url{http://tools.ietf.org/html/draft-ietf-core-coap-13}\\
-Block: \url{http://tools.ietf.org/html/draft-ietf-core-block-10}\\
-Observe: \url{http://tools.ietf.org/html/draft-ietf-core-observe-07}\\
+CoAP: \url{http://tools.ietf.org/html/draft-ietf-core-coap-18}\\
+Block: \url{http://tools.ietf.org/html/draft-ietf-core-block-12}\\
+Observe: \url{http://tools.ietf.org/html/draft-ietf-core-observe-08}\\
 }
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
