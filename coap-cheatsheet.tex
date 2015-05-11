@@ -80,8 +80,8 @@
 \begin{center}
      \Large{\underline{Constrained Application Protocol}} \\
      {\tiny
-       (RFC 6690, draft-ietf-core-coap-18, draft-ietf-core-block-12,
-       draft-ietf-core-observe-08)
+       (RFC 6690, RFC7252, draft-ietf-core-block-17,
+       draft-ietf-core-observe-16)
      }
 \end{center}
 
@@ -107,7 +107,7 @@ transfer protocol for use with constrained nodes and constrained
 Ver: Version, T: Type, TKL: Token Length
 }
 
-\section{Method types}
+\section{Message types}
 {\tiny
 \begin{verbatim}
 +------+-----------------+
@@ -196,10 +196,10 @@ Ver: Version, T: Type, TKL: Token Length
 | No. | C  | U | N | R | Name           | Format | Length | Default     |
 +-----+----+---+---+---+----------------+--------+--------+-------------+
 |   1 | x  |   |   | x | If-Match       | opaque | 0-8    | (none)      |
-|   3 | x  | x | - |   | Uri-Host       | string | 1-255  | (see below) |  
+|   3 | x  | x | - |   | Uri-Host       | string | 1-255  | (see note 1)|  
 |   4 |    |   |   | x | ETag           | opaque | 1-8    | (none)      |
 |   5 | x  |   |   |   | If-None-Match  | empty  | 0      | (none)      |
-|   7 | x  | x | - |   | Uri-Port       | uint   | 0-2    | (see below) |
+|   7 | x  | x | - |   | Uri-Port       | uint   | 0-2    | (see note 1)|
 |   8 |    |   |   | x | Location-Path  | string | 0-255  | (none)      |
 |  11 | x  | x | - | x | Uri-Path       | string | 0-255  | (none)      |
 |  12 |    |   |   |   | Content-Format | uint   | 0-2    | (none)      |
@@ -212,7 +212,8 @@ Ver: Version, T: Type, TKL: Token Length
 |  60 |    |   | x |   | Size1          | uint   | 0-4    | (none)      |
 +-----+----+---+---+---+----------------+--------+--------+-------------+
 \end{verbatim}
-C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable
+C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable \\
+Note 1: taken from destination address/port of request message
 }
 
 \section{Content-Formats}
@@ -227,6 +228,7 @@ C=Critical, U=Unsafe, N=No-Cache-Key, R=Repeatable
 | application/octet-stream |  42 |
 | application/exi          |  47 |
 | application/json         |  50 |
+| application/cbor         |  60 |
 +--------------------------+-----+
 \end{verbatim}
 }
