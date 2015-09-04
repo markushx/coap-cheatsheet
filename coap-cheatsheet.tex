@@ -127,6 +127,8 @@ Ver: Version, T: Type, TKL: Token Length
 +------+--------+
 | Code | Name   |
 +------+--------+
+| 0.00 | EMPTY  |
++------+--------+
 | 0.01 | GET    |
 | 0.02 | POST   |
 | 0.03 | PUT    |
@@ -196,7 +198,7 @@ Ver: Version, T: Type, TKL: Token Length
 | No. | C  | U | N | R | Name           | Format | Length | Default     |
 +-----+----+---+---+---+----------------+--------+--------+-------------+
 |   1 | x  |   |   | x | If-Match       | opaque | 0-8    | (none)      |
-|   3 | x  | x | - |   | Uri-Host       | string | 1-255  | (see note 1)|  
+|   3 | x  | x | - |   | Uri-Host       | string | 1-255  | (see note 1)|
 |   4 |    |   |   | x | ETag           | opaque | 1-8    | (none)      |
 |   5 | x  |   |   |   | If-None-Match  | empty  | 0      | (none)      |
 |   7 | x  | x | - |   | Uri-Port       | uint   | 0-2    | (see note 1)|
