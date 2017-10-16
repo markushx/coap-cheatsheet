@@ -150,45 +150,35 @@ Ver: Version, T: Type, TKL: Token Length
 
 {\tiny
 \begin{verbatim}
-+------+--------------+
-|Class |              |
-+------+--------------+
-| 2.xx | Success      |
-| 4.xx | Client Error |
-| 5.xx | Server Error |
-+------+--------------+
-\end{verbatim}
-}
-
-{\tiny
-\begin{verbatim}
-+------------+------------------------------+
-| Code       | Description                  |
-+------------+------------------------------+
-| 2.01 (65)  | Created                      |
-| 2.02 (66)  | Deleted                      |
-| 2.03 (67)  | Valid                        |
-| 2.04 (68)  | Changed                      |
-| 2.05 (69)  | Content                      |
-| 2.31 (95)  | Continue                     |
-| 4.00 (128) | Bad Request                  |
-| 4.01 (129) | Unauthorized                 |
-| 4.02 (130) | Bad Option                   |
-| 4.03 (131) | Forbidden                    |
-| 4.04 (132) | Not Found                    |
-| 4.05 (133) | Method Not Allowed           |
-| 4.06 (134) | Not Acceptable               |
-| 4.08 (136) | Request Entity Incomplete    |
-| 4.12 (140) | Precondition Failed          |
-| 4.13 (141) | Request Entity Too Large     |
-| 4.15 (143) | Unsupported Content-Format   |
-| 5.00 (160) | Internal Server Error        |
-| 5.01 (161) | Not Implemented              |
-| 5.02 (162) | Bad Gateway                  |
-| 5.03 (163) | Service Unavailable          |
-| 5.04 (164) | Gateway Timeout              |
-| 5.05 (165) | Proxying Not Supported       |
-+------------+------------------------------+
++------------------+------------------------------+--------------+
+| Code             | Description                  |              |
++------------------+------------------------------+--------------+
+| 2.01 (65, 0x41)  | Created                      | Success      |
+| 2.02 (66, 0x42)  | Deleted                      |              |
+| 2.03 (67, 0x43)  | Valid                        |              |
+| 2.04 (68, 0x44)  | Changed                      |              |
+| 2.05 (69, 0x45)  | Content                      |              |
+| 2.31 (95, 0x5F)  | Continue                     |              |
++------------------+------------------------------+--------------+
+| 4.00 (128, 0x80) | Bad Request                  | Client Error |
+| 4.01 (129, 0x81) | Unauthorized                 |              |
+| 4.02 (130, 0x82) | Bad Option                   |              |
+| 4.03 (131, 0x83) | Forbidden                    |              |
+| 4.04 (132, 0x84) | Not Found                    |              |
+| 4.05 (133, 0x85) | Method Not Allowed           |              |
+| 4.06 (134, 0x86) | Not Acceptable               |              |
+| 4.08 (136, 0x88) | Request Entity Incomplete    |              |
+| 4.12 (140, 0x8C) | Precondition Failed          |              |
+| 4.13 (141, 0x8D) | Request Entity Too Large     |              |
+| 4.15 (143, 0x8F) | Unsupported Content-Format   |              |
++------------------+------------------------------+--------------+
+| 5.00 (160, 0xA0) | Internal Server Error        | Server Error |
+| 5.01 (161, 0xA1) | Not Implemented              |              |
+| 5.02 (162, 0xA2) | Bad Gateway                  |              |
+| 5.03 (163, 0xA3) | Service Unavailable          |              |
+| 5.04 (164, 0xA4) | Gateway Timeout              |              |
+| 5.05 (165, 0xA5) | Proxying Not Supported       |              |
++------------------+------------------------------+--------------+
 \end{verbatim}
 }
 
