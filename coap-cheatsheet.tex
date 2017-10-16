@@ -80,8 +80,7 @@
 \begin{center}
      \Large{\underline{Constrained Application Protocol}} \\
      {\tiny
-       (RFC 6690, RFC7252, draft-ietf-core-block-17,
-       draft-ietf-core-observe-16)
+       (RFC 6690, RFC 7252, RFC 7959, RFC 7641)
      }
 \end{center}
 
@@ -171,6 +170,7 @@ Ver: Version, T: Type, TKL: Token Length
 | 2.03 (67)  | Valid                        |
 | 2.04 (68)  | Changed                      |
 | 2.05 (69)  | Content                      |
+| 2.31 (95)  | Continue                     |
 | 4.00 (128) | Bad Request                  |
 | 4.01 (129) | Unauthorized                 |
 | 4.02 (130) | Bad Option                   |
@@ -178,6 +178,7 @@ Ver: Version, T: Type, TKL: Token Length
 | 4.04 (132) | Not Found                    |
 | 4.05 (133) | Method Not Allowed           |
 | 4.06 (134) | Not Acceptable               |
+| 4.08 (136) | Request Entity Incomplete    |
 | 4.12 (140) | Precondition Failed          |
 | 4.13 (141) | Request Entity Too Large     |
 | 4.15 (143) | Unsupported Content-Format   |
@@ -209,6 +210,7 @@ Ver: Version, T: Type, TKL: Token Length
 |  15 | x  | x | - | x | Uri-Query      | string | 0-255  | (none)      |
 |  17 | x  |   |   |   | Accept         | uint   | 0-2    | (none)      |
 |  20 |    |   |   | x | Location-Query | string | 0-255  | (none)      |
+|  28 |    |   | x |   | Size2          | uint   | 0-4    | (none)      |
 |  35 | x  | x | - |   | Proxy-Uri      | string | 1-1034 | (none)      |
 |  39 | x  | x | - |   | Proxy-Scheme   | string | 1-255  | (none)      |
 |  60 |    |   | x |   | Size1          | uint   | 0-4    | (none)      |
@@ -389,8 +391,8 @@ documents:\\
 {\tiny
 Link-format: \url{http://tools.ietf.org/html/rfc6690}\\
 CoAP: \url{http://tools.ietf.org/html/rfc7252}\\
-Block: \url{http://tools.ietf.org/html/draft-ietf-core-block-17}\\
-Observe: \url{http://tools.ietf.org/html/draft-ietf-core-observe-16}\\
+Block: \url{http://tools.ietf.org/html/rfc7959}\\
+Observe: \url{http://tools.ietf.org/html/rfc7641}\\
 }
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
